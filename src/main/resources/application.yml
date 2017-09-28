@@ -12,10 +12,22 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      show_sql: true
-      use_sql_comments: true
       ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
 
 management:
   security:
     enabled: false
+
+#---- FIXME - not use accessTokenUri, clientId and Secret should use as public key and hash as pathParam ------------#
+security:
+  oauth2:
+    client:
+      clientId: 76332cfe2b3b07eb22efa7746af21659
+      clientSecret: 5ec2ffdda65ebdbb8499b6e42e607ead05583c10
+      accessTokenUri: http://docs204.ecom.carrefour:8084/oauth/token
+      authenticationScheme: header
+      grant-type: client_credentials
